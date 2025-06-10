@@ -56,54 +56,104 @@ class SensorDisplay extends StatelessWidget {
   }
 
   Widget _buildSensorGrid(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      childAspectRatio: 2.5,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildSensorItem(
-          context,
-          'Temperature',
-          '${sensorData.temperature} °C',
-          Icons.thermostat,
+        // Basic sensor readings
+        GridView.count(
+          crossAxisCount: 2,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          childAspectRatio: 2.5,
+          children: [
+            _buildSensorItem(
+              context,
+              'Temperature',
+              '${sensorData.temperature} °C',
+              Icons.thermostat,
+            ),
+            _buildSensorItem(
+              context,
+              'Humidity',
+              '${sensorData.humidity} %',
+              Icons.water_drop,
+            ),
+            _buildSensorItem(
+              context,
+              'Luminosity',
+              '${sensorData.luminosite.toStringAsFixed(2)} lux',
+              Icons.light_mode,
+            ),
+            _buildSensorItem(
+              context,
+              'Dust',
+              '${sensorData.poussiere.toStringAsFixed(2)} µg/m³',
+              Icons.air,
+            ),
+            _buildSensorItem(
+              context,
+              'Current',
+              '${sensorData.courant} A',
+              Icons.electric_bolt,
+            ),
+            _buildSensorItem(
+              context,
+              'Voltage',
+              '${sensorData.tension} V',
+              Icons.bolt,
+            ),
+            _buildSensorItem(
+              context,
+              'Power',
+              '${sensorData.puissance.toStringAsFixed(2)} W',
+              Icons.power,
+            ),
+          ],
         ),
-        _buildSensorItem(
-          context,
-          'Humidity',
-          '${sensorData.humidity} %',
-          Icons.water_drop,
-        ),
-        _buildSensorItem(
-          context,
-          'Luminosity',
-          '${sensorData.luminosite.toStringAsFixed(2)} lux',
-          Icons.light_mode,
-        ),
-        _buildSensorItem(
-          context,
-          'Dust',
-          '${sensorData.poussiere.toStringAsFixed(2)} µg/m³',
-          Icons.air,
-        ),
-        _buildSensorItem(
-          context,
-          'Current',
-          '${sensorData.courant} A',
-          Icons.electric_bolt,
-        ),
-        _buildSensorItem(
-          context,
-          'Voltage',
-          '${sensorData.tension} V',
-          Icons.bolt,
-        ),
-        _buildSensorItem(
-          context,
-          'Power',
-          '${sensorData.puissance.toStringAsFixed(2)} W',
-          Icons.power,
-        ),
+
+        // Additional metrics section
+        if (sensorData.rendement != null ||
+            sensorData.efficacite != null ||
+            sensorData.irradiation != null) ...[
+          const SizedBox(height: 16),
+          const Divider(),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Text(
+              'Performance Metrics',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+          ),
+          GridView.count(
+            crossAxisCount: 2,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            childAspectRatio: 2.5,
+            children: [
+              if (sensorData.rendement != null)
+                _buildSensorItem(
+                  context,
+                  'Rendement',
+                  '${sensorData.rendement!.toStringAsFixed(2)} %',
+                  Icons.trending_up,
+                ),
+              if (sensorData.efficacite != null)
+                _buildSensorItem(
+                  context,
+                  'Efficacité',
+                  '${sensorData.efficacite!.toStringAsFixed(2)} %',
+                  Icons.speed,
+                ),
+              if (sensorData.irradiation != null)
+                _buildSensorItem(
+                  context,
+                  'Irradiation',
+                  '${sensorData.irradiation!.toStringAsFixed(2)} W/m²',
+                  Icons.wb_sunny,
+                ),
+            ],
+          ),
+        ],
       ],
     );
   }

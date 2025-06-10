@@ -59,6 +59,41 @@ void main() {
       expect(json.containsKey('niveau'), false);
     });
 
+    test(
+      'should create a SensorData instance from a map with timepast field',
+      () {
+        // Arrange
+        final Map<dynamic, dynamic> map = {
+          'courant': 0.5,
+          'humidity': 54.5,
+          'luminosite': -2,
+          'poussiere': 178.90625,
+          'puissance': 0.976,
+          'temperature': 28.8,
+          'tension': 1.952,
+          'timepast': '2025-06-10 09:21:45',
+        };
+        const String key = '-OSO8IUsx5j72C_9VBfC';
+
+        // Act
+        final sensorData = SensorData.fromMap(map, key);
+
+        // Assert
+        expect(sensorData.courant, 0.5);
+        expect(sensorData.humidity, 54.5);
+        expect(sensorData.luminosite, -2);
+        expect(sensorData.poussiere, 178.90625);
+        expect(sensorData.puissance, 0.976);
+        expect(sensorData.temperature, 28.8);
+        expect(sensorData.tension, 1.952);
+        expect(
+          sensorData.timestamp,
+          '2025-06-10 09:21:45',
+        ); // Should use timepast field
+        expect(sensorData.niveau, null);
+      },
+    );
+
     test('should create a copy with niveau', () {
       // Arrange
       final sensorData = SensorData(

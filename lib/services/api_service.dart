@@ -1,14 +1,19 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/sensor_data.dart';
+import 'dart:developer' as developer;
 
 class ApiService {
-  final String apiUrl = 'http://192.168.2.108:3000/predict';
+  // Update this URL to match your Flask server address
+  final String apiUrl = 'http://10.0.2.2:5050/predict'; // Updated to port 5050
 
-  Future<int> predictLevel(SensorData sensorData) async {
+  /// Sends sensor data to the API and returns the processed data with additional metrics
+  Future<SensorData> processSensorData(SensorData sensorData) async {
     try {
-      print('Sending data to API: ${jsonEncode(sensorData.toApiJson())}');
-      print('API URL: $apiUrl');
+      developer.log(
+        'Sending data to API: ${jsonEncode(sensorData.toApiJson())}',
+      );
+      developer.log('API URL: $apiUrl');
 
       final response = await http.post(
         Uri.parse(apiUrl),
@@ -16,20 +21,32 @@ class ApiService {
         body: jsonEncode(sensorData.toApiJson()),
       );
 
-      print('API Response Status: ${response.statusCode}');
-      print('API Response Body: ${response.body}');
+      developer.log('API Response Status: ${response.statusCode}');
+      developer.log('API Response Body: ${response.body}');
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = jsonDecode(response.body);
-        return data['niveau'] as int; // API still returns 'niveau' key
+        // Return updated sensor data with all the metrics from the API
+        return sensorData.withApiResponse(data);
       } else {
         throw Exception(
-          'Failed to predict level: ${response.statusCode}, Response: ${response.body}',
+          'Failed to process sensor data: ${response.statusCode}, Response: ${response.body}',
         );
       }
     } catch (e) {
-      print('API Error: $e');
+      developer.log('API Error: $e', error: e);
       throw Exception('Error sending data to API: $e');
+    }
+  }
+
+  /// Legacy method for backward compatibility
+  Future<int> predictLevel(SensorData sensorData) async {
+    try {
+      final updatedSensorData = await processSensorData(sensorData);
+      return updatedSensorData.niveau ?? 0; // Default to 0 if niveau is null
+    } catch (e) {
+      developer.log('Error in predictLevel: $e', error: e);
+      throw Exception('Error predicting level: $e');
     }
   }
 }

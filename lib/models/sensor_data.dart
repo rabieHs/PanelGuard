@@ -9,6 +9,11 @@ class SensorData {
   final String timestamp;
   final int? niveau; // Response from API
 
+  // Additional metrics from API
+  final double? rendement;
+  final double? efficacite;
+  final double? irradiation;
+
   SensorData({
     required this.courant,
     required this.humidity,
@@ -19,6 +24,9 @@ class SensorData {
     required this.tension,
     required this.timestamp,
     this.niveau,
+    this.rendement,
+    this.efficacite,
+    this.irradiation,
   });
 
   factory SensorData.fromMap(Map<dynamic, dynamic> map, String key) {
@@ -30,7 +38,9 @@ class SensorData {
       puissance: (map['puissance'] as num).toDouble(),
       temperature: (map['temperature'] as num).toDouble(),
       tension: (map['tension'] as num).toDouble(),
-      timestamp: key,
+      timestamp:
+          map['timepast'] as String? ??
+          key, // Use timepast field or fallback to key
       niveau: null,
     );
   }
@@ -47,7 +57,12 @@ class SensorData {
     };
   }
 
-  SensorData copyWith({int? niveau}) {
+  SensorData copyWith({
+    int? niveau,
+    double? rendement,
+    double? efficacite,
+    double? irradiation,
+  }) {
     return SensorData(
       courant: this.courant,
       humidity: this.humidity,
@@ -58,6 +73,28 @@ class SensorData {
       tension: this.tension,
       timestamp: this.timestamp,
       niveau: niveau ?? this.niveau,
+      rendement: rendement ?? this.rendement,
+      efficacite: efficacite ?? this.efficacite,
+      irradiation: irradiation ?? this.irradiation,
+    );
+  }
+
+  /// Creates a new SensorData instance with API response data
+  SensorData withApiResponse(Map<String, dynamic> apiResponse) {
+    return copyWith(
+      niveau: apiResponse['niveau'] as int?,
+      rendement:
+          apiResponse['rendement'] != null
+              ? (apiResponse['rendement'] as num).toDouble()
+              : null,
+      efficacite:
+          apiResponse['efficacite'] != null
+              ? (apiResponse['efficacite'] as num).toDouble()
+              : null,
+      irradiation:
+          apiResponse['irradiation'] != null
+              ? (apiResponse['irradiation'] as num).toDouble()
+              : null,
     );
   }
 }

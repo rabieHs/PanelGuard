@@ -32,54 +32,54 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCdcrpyd2JRwY7SM9TKWJ5hYGMn2py-1g8',
-    appId: '1:913005511206:web:dc1eccc4aaf9c16e29dce7',
-    messagingSenderId: '913005511206',
-    projectId: 'aido-c0e64',
-    authDomain: 'aido-c0e64.firebaseapp.com',
-    databaseURL: 'https://aido-c0e64-default-rtdb.firebaseio.com',
-    storageBucket: 'aido-c0e64.firebasestorage.app',
-    measurementId: 'G-MQ43812M3Y',
+    apiKey: 'AIzaSyC2PDiLMZeqxirD5CZAMdV7HxL8uT15IPQ',
+    appId: '1:154832305954:web:a53aee0d077974e0daef7b',
+    messagingSenderId: '154832305954',
+    projectId: 'sensor-data-4923f',
+    authDomain: 'sensor-data-4923f.firebaseapp.com',
+    databaseURL: 'https://sensor-data-4923f-default-rtdb.firebaseio.com',
+    storageBucket: 'sensor-data-4923f.firebasestorage.app',
+    measurementId: 'G-9WKKBC4BCD',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCDvn_Ye6nxzljqlOf82AG1vwXMc-TQ11E',
-    appId: '1:913005511206:android:7301b88c2325757729dce7',
-    messagingSenderId: '913005511206',
-    projectId: 'aido-c0e64',
-    databaseURL: 'https://aido-c0e64-default-rtdb.firebaseio.com',
-    storageBucket: 'aido-c0e64.firebasestorage.app',
+    apiKey: 'AIzaSyBtmkfaK5oDu1KlqnUTm0SkdlqEjeIDdbE',
+    appId: '1:154832305954:android:cc3193cbb146744cdaef7b',
+    messagingSenderId: '154832305954',
+    projectId: 'sensor-data-4923f',
+    databaseURL: 'https://sensor-data-4923f-default-rtdb.firebaseio.com',
+    storageBucket: 'sensor-data-4923f.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB0jBIaPbAtHKuu3CaUsHrC70RBOtXdK7A',
-    appId: '1:913005511206:ios:f9f50a7281d2b09129dce7',
-    messagingSenderId: '913005511206',
-    projectId: 'aido-c0e64',
-    databaseURL: 'https://aido-c0e64-default-rtdb.firebaseio.com',
-    storageBucket: 'aido-c0e64.firebasestorage.app',
+    apiKey: 'AIzaSyAu1EjQW_LTKw0BqUGMItgC2wyzQWkJwUo',
+    appId: '1:154832305954:ios:386f3f4aa8aba50bdaef7b',
+    messagingSenderId: '154832305954',
+    projectId: 'sensor-data-4923f',
+    databaseURL: 'https://sensor-data-4923f-default-rtdb.firebaseio.com',
+    storageBucket: 'sensor-data-4923f.firebasestorage.app',
     iosBundleId: 'com.example.aidoSensorApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyB0jBIaPbAtHKuu3CaUsHrC70RBOtXdK7A',
-    appId: '1:913005511206:ios:f9f50a7281d2b09129dce7',
-    messagingSenderId: '913005511206',
-    projectId: 'aido-c0e64',
-    databaseURL: 'https://aido-c0e64-default-rtdb.firebaseio.com',
-    storageBucket: 'aido-c0e64.firebasestorage.app',
+    apiKey: 'AIzaSyAu1EjQW_LTKw0BqUGMItgC2wyzQWkJwUo',
+    appId: '1:154832305954:ios:386f3f4aa8aba50bdaef7b',
+    messagingSenderId: '154832305954',
+    projectId: 'sensor-data-4923f',
+    databaseURL: 'https://sensor-data-4923f-default-rtdb.firebaseio.com',
+    storageBucket: 'sensor-data-4923f.firebasestorage.app',
     iosBundleId: 'com.example.aidoSensorApp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCdcrpyd2JRwY7SM9TKWJ5hYGMn2py-1g8',
-    appId: '1:913005511206:web:a572a462f05e4fba29dce7',
-    messagingSenderId: '913005511206',
-    projectId: 'aido-c0e64',
-    authDomain: 'aido-c0e64.firebaseapp.com',
-    databaseURL: 'https://aido-c0e64-default-rtdb.firebaseio.com',
-    storageBucket: 'aido-c0e64.firebasestorage.app',
-    measurementId: 'G-S3BYSEK5B9',
+    apiKey: 'AIzaSyC2PDiLMZeqxirD5CZAMdV7HxL8uT15IPQ',
+    appId: '1:154832305954:web:d1145c800ade58a9daef7b',
+    messagingSenderId: '154832305954',
+    projectId: 'sensor-data-4923f',
+    authDomain: 'sensor-data-4923f.firebaseapp.com',
+    databaseURL: 'https://sensor-data-4923f-default-rtdb.firebaseio.com',
+    storageBucket: 'sensor-data-4923f.firebasestorage.app',
+    measurementId: 'G-0Z3FBNCRW5',
   );
 
 }

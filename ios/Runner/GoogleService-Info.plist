@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyB0jBIaPbAtHKuu3CaUsHrC70RBOtXdK7A</string>
+	<string>AIzaSyAu1EjQW_LTKw0BqUGMItgC2wyzQWkJwUo</string>
 	<key>GCM_SENDER_ID</key>
-	<string>913005511206</string>
+	<string>154832305954</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.aidoSensorApp</string>
 	<key>PROJECT_ID</key>
-	<string>aido-c0e64</string>
+	<string>sensor-data-4923f</string>
 	<key>STORAGE_BUCKET</key>
-	<string>aido-c0e64.firebasestorage.app</string>
+	<string>sensor-data-4923f.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,8 +25,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:913005511206:ios:f9f50a7281d2b09129dce7</string>
+	<string>1:154832305954:ios:386f3f4aa8aba50bdaef7b</string>
 	<key>DATABASE_URL</key>
-	<string>https://aido-c0e64-default-rtdb.firebaseio.com</string>
+	<string>https://sensor-data-4923f-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
